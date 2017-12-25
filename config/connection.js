@@ -8,8 +8,11 @@ var connection = mysql.createConnection({
 });
 
 connection.connect((err) => {
-    if (err) console.error(err);
-    console.log(`connected at id: ${connection.threadId}`);
+    if (err) {
+        console.error(`Error connection: ${err.stack}`);
+        return;
+    }
+    console.log(`Connected at id: ${connection.threadId}`);
 });
 
 module.exports = connection;
