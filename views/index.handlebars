@@ -2,6 +2,23 @@
 
 <h1>Eat-Da-Burger!</h1>
 
+<ul>
+    {{#each burgers}}
+        {{#unless this.devoured}}
+            <li>
+                {{this.burger_name}}
+
+                <form method="POST" action="burgers/delete/{{this.id}}?_method=DELETE">
+                    <input type="hidden" name="devoured" value="true" />
+                    <button type="submit">Devour it!</button>
+                </form>
+
+                {{!-- {{> burgers/delete-burger}} --}}
+            </li>
+        {{/unless}}
+    {{/each}}
+</ul>
+
 <form method="POST">
     <input type="text" name="burger" />
     <button type="submit">Submit</button>
