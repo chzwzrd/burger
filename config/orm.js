@@ -22,6 +22,8 @@ var objToSql = (obj) => {
             arr.push(`${key} = ${value}`);
         }
     }
+
+    return arr.toString();
 };
 
 var orm = {
