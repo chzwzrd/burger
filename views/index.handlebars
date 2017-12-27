@@ -3,15 +3,15 @@
 <h1>Eat-Da-Burger!</h1>
 
 {{!-- UNDEVOURED --}}
-<ul>
+<ul class="to-eat">
     {{#each burgers}}
         {{#unless this.devoured}}
             <li>
-                {{this.burger_name}}
+                {{this.burger_name}}{{this.id}}
 
                 <form method="POST" action="api/burgers/{{this.id}}?_method=PUT">
                     <input type="hidden" name="devoured" value="true" />
-                    <button data-id="{{id}}" id="devour">Devour it!</button>
+                    <button id="devour">Devour it!</button>
                 </form>
 
                 {{!-- {{> burgers/delete-burger}} --}}
@@ -21,7 +21,7 @@
 </ul>
 
 {{!-- DEVOURED --}}
-<ul>
+<ul class="eaten">
     {{#each burgers}}
         {{#if this.devoured}}
             <li>
@@ -29,7 +29,7 @@
 
                 <form method="POST" action="burgers/update/{{this.id}}?_method=PUT">
                     <input type="hidden" name="devoured" value="false" />
-                    <button type="submit">Throw it up!</button>
+                    <button id="undevour">Throw it up!</button>
                 </form>
             </li>
         {{/if}}

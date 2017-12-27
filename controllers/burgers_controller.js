@@ -27,11 +27,12 @@ router.put('/api/burgers/:id', (req, res) => {
 
     console.log('Condition', condition);
 
-    burger.updateOne({ devoured: 1 }, condition, (result) => {
+    burger.updateOne({ devoured: req.body.devoured }, condition, (result) => {
         if (result.changedRows === 0) {
             return res.status(404).end();
         } else {
-            res.status(200).end();
+            res.redirect('/burgers');
+            return res.status(200).end();
         }
     });
 });
