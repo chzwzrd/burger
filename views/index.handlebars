@@ -9,9 +9,9 @@
             <li>
                 {{this.burger_name}}
 
-                <form method="POST" action="burgers/update/{{this.id}}?_method=PUT">
+                <form method="POST" action="api/burgers/{{this.id}}?_method=PUT">
                     <input type="hidden" name="devoured" value="true" />
-                    <button type="submit" id="devour">Devour it!</button>
+                    <button data-id="{{id}}" id="devour">Devour it!</button>
                 </form>
 
                 {{!-- {{> burgers/delete-burger}} --}}

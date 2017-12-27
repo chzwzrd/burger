@@ -20,4 +20,17 @@ $(() => {
             location.reload();
         });
     });
+
+    $('#devour').on('click', () => {
+        // send the PUT request
+        $.ajax('/api/burgers/' + $(this).attr('data-id'), {
+            type: 'PUT',
+            data: { devoured: 1 }
+        }).then(() => {
+            console.log('Changed devoured to', true);
+
+            //reload the page to get the updated list
+            location.reload();
+        });
+    });
 });

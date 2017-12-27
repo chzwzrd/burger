@@ -1,9 +1,19 @@
 body {
+    background-color: #e7e2e2;
+    font-family: 'Montserrat';
+}
+
+.container {
     text-align: center;
 }
 
 li {
     list-style: none;
+    margin-left: -35px;
+}
+
+#devour {
+    margin-bottom: 10px;
 }
 
 img {

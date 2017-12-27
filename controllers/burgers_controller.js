@@ -16,9 +16,23 @@ router.get('/burgers', (req, res) => {
 });
 
 router.post('/api/burgers', (req, res) => {
-    burger.insertOne(['burger_name', 'devoured'], [req.body.name, req.body.devoured], (data) => {
+    burger.insertOne(['burger_name', 'devoured'], [req.body.name, req.body.devoured], (result) => {
         // send back the ID of the new burger
-        res.send(data);
+        res.send({ id: result.insertId });
+    });
+});
+
+router.put('/api/burgers/:id', (req, res) => {
+    var condition = `id = ${req.params.id}`;
+
+    console.log('Condition', condition);
+
+    burger.updateOne({ devoured: req.body.devoured }, condition, (result) => {
+        if (result.changedRows === 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
     });
 });
 
