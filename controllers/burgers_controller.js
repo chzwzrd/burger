@@ -15,4 +15,11 @@ router.get('/burgers', (req, res) => {
     });
 });
 
+router.post('/api/burgers', (req, res) => {
+    burger.insertOne(['burger_name', 'devoured'], [req.body.name, req.body.devoured], (data) => {
+        // send back the ID of the new burger
+        res.send(data);
+    });
+});
+
 module.exports = router;
